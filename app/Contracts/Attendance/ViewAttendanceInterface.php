@@ -4,5 +4,5 @@ namespace App\Contracts\Attendance;
 
 interface ViewAttendanceInterface
 {
-    public function view();
+    public function view(int $eventId);
 }

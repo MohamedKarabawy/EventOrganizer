@@ -11,9 +11,11 @@ return new class extends Migration
     {
         Schema::create('eo_rsvp', function (Blueprint $table) {
             $table->bigIncrements('id')->from(2423);
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('eo_users')->onUpdate('cascade')->onDelete('cascade');
             $table->bigInteger('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('eo_events')->onUpdate('cascade')->onDelete('cascade');
-            $table->enum('status', ['accepted', 'declined', 'pending']);
+            $table->enum('status', ['pending', 'declined', 'accepted']);
             $table->timestamps();
         });
     }

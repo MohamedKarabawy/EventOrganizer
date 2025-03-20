@@ -23,6 +23,6 @@ class Event extends Model
 
     public function attendance()
     {
-        return $this->hasMany(RSVP::class, 'asset_id', 'id');
+        return $this->hasMany(RSVP::class, 'event_id', 'id');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class RSVP extends Model
@@ -14,7 +15,13 @@ class RSVP extends Model
     public $timestamps = true;
 
     protected $fillable = [
+        'user_id',
         'event_id',
         'status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

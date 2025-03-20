@@ -14,13 +14,13 @@ class View implements ViewAttendanceInterface
         $this->attendanceViewService = $attendanceViewService;
     }
 
-    public function view($eventId)
+    public function view(int $eventId)
     {
         try
         {
             $attendance = $this->attendanceViewService->getAttendanceByEventId($eventId);
 
-            return response()->json(['attendance' => $attendance], 200);  
+            return response()->json($attendance, 200);  
         }
         catch (\Exception $e) 
         {

@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\RSVP\RSVPController;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Events\EventsController;
+use App\Http\Controllers\Attendance\AttendanceController;
 
  // Route for login
 Route::post('auth/login', [AuthController::class, 'login']);
@@ -36,6 +38,18 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
  
     // View Events (with filters if needed)
     Route::get('events', [EventsController::class, 'view']);
+
+    // Keep track of events attendance
+    Route::get('events/{eventId}/attendance', [AttendanceController::class, 'show']);
+
+    // Define a POST route to associate users with a specific event
+    Route::post('events/{eventId}/associate', [AttendanceController::class, 'associateUsersWithEvent']);
+
+    // Route to fetch all events the authenticated user is attending (RSVPed)
+    Route::get('events/attendee', [RSVPController::class, 'getUserEvents']);
+
+    // Route for handling RSVP responses (accept/decline) for a specific event
+    Route::post('events/{eventId}/rsvp', [RSVPController::class, 'respondToEvent']);
 });
 
 
