@@ -13,8 +13,10 @@ Route::post('auth/login', [AuthController::class, 'login']);
 // Route for register
 Route::post('auth/register', [AuthController::class, 'register']);
 
-// Group routes with passport authentication middleware
+// Group routes with sanctum authentication middleware
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    //Admins only
+    Route::group(['middleware' => ['can:admin']], function () {
     // Create User
     Route::post('users', [UsersController::class, 'create']);
 
@@ -26,7 +28,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // View all users
     Route::get('users', [UsersController::class, 'view']);
+    });
 
+    //Admins or Organizer
+    Route::group(['middleware' => ['can:admin-or-organizer']], function () {
+    // Route to fetch and display the list of attendees
+    Route::get('attendees', [AttendanceController::class, 'showAttendees']);
+    
     // Create Event
     Route::post('events', [EventsController::class, 'create']);
 
@@ -45,11 +53,16 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Define a POST route to associate users with a specific event
     Route::post('events/{eventId}/associate', [AttendanceController::class, 'associateUsersWithEvent']);
 
+    });
+
+    //Attendee only
+    Route::group(['middleware' => ['can:attendee']], function () {
     // Route to fetch all events the authenticated user is attending (RSVPed)
     Route::get('events/attendee', [RSVPController::class, 'getUserEvents']);
 
     // Route for handling RSVP responses (accept/decline) for a specific event
     Route::post('events/{eventId}/rsvp', [RSVPController::class, 'respondToEvent']);
+    });
 });
 
 
