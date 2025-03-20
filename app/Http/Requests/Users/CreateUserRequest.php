@@ -17,7 +17,7 @@ class CreateUserRequest extends FormRequest
         return [
             'name' => 'required|string|regex:/^[a-zA-Z\s]+$/',
             'email' => 'required|email|unique:eo_users,email',
-            'phone_number' => 'required|regex:/^[0-9\-\+\(\)\s]+$/|unique:eo_users,phone_number,' . $this->user()->id,
+            'phone_number' => 'required|regex:/^[0-9\-\+\(\)\s]+$/|unique:eo_users,phone_number',
             'password' => 'required|string|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|confirmed',
             'role' => 'nullable|in:attendee,organizer,admin,',
         ];

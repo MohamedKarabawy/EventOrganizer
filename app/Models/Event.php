@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\RSVP;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -19,4 +20,9 @@ class Event extends Model
         'location',
         'date'
     ];
+
+    public function attendance()
+    {
+        return $this->hasMany(RSVP::class, 'asset_id', 'id');
+    }
 }
