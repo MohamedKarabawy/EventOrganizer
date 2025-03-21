@@ -9,7 +9,7 @@ Before you begin, make sure your system meets the following requirements:
 - **PHP Version**: 8.2 to 8.4
 - **Composer**: PHP dependency manager
 - **Database**: MySQL (via XAMPP/WAMP)
-- **Laravel**: Version 8.x (this is the version for this project, but make sure the required version aligns with your system)
+- **Laravel**: Version 12.x (this is the version for this project, but make sure the required version aligns with your system)
 
 ---
 
