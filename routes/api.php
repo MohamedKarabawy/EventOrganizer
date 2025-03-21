@@ -63,6 +63,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Route for handling RSVP responses (accept/decline) for a specific event
     Route::post('events/{eventId}/rsvp', [RSVPController::class, 'respondToEvent']);
     });
+
+    // Route for Logout
+    Route::post('auth/logout', [AuthController::class, 'logout']);
 });
 
 
