@@ -1,6 +1,6 @@
-# EventOrganizer Laravel Project Setup
+# Event Organizer Laravel Project Setup
 
-Welcome to the **EventOrganizer** Laravel project! This guide will take you through the necessary steps to get the project running locally on your machine.
+Welcome to the **Event Organizer** Laravel project! This guide will take you through the necessary steps to get the project running locally on your machine.
 
 ## Prerequisites
 
