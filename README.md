@@ -52,7 +52,7 @@ Composer is a dependency manager for PHP, which you'll need to install before se
 Clone the EventOrganizer Laravel project from GitHub to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/EventOrganizer.git
+git clone https://github.com/MohamedKarabawy/EventOrganizer.git
 cd EventOrganizer
 ```
 
