@@ -15,7 +15,7 @@ class UserUpdateService
             throw new \Exception('User not found');
         }
 
-        (isset($validatedData['password']) && !empty($validatedData['password'])) 
+        !empty($validatedData['password'])
         && $validatedData['password'] = Hash::make($validatedData['password']);
 
         $user->update($validatedData);
