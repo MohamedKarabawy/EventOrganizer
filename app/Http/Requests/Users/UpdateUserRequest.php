@@ -17,7 +17,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|string|regex:/^[a-zA-Z\s]+$/',
-            'email' => ['required','email', Rule::unique('eo_users', 'phone_number')->ignore($this->userId)],
+            'email' => ['required','email', Rule::unique('eo_users', 'email')->ignore($this->userId)],
             'phone_number' => ['required', 'regex:/^[0-9\-\+\(\)\s]+$/', Rule::unique('eo_users', 'phone_number')->ignore($this->userId)],
             'password' => 'nullable|string|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|confirmed', 
             'role' => 'required|in:admin,organizer,attendee',
